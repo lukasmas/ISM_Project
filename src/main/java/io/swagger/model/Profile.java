@@ -35,7 +35,7 @@ public class Profile   {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @JsonProperty("id")
-  private Long id = null;
+  private int id = 0;
 
   @JsonProperty("userId")
   private String userId = null;
@@ -44,7 +44,7 @@ public class Profile   {
   @Valid
   private String photoUrls = null;
 
-  public Profile id(Long id) {
+  public Profile id(int id) {
     this.id = id;
     return this;
   }
@@ -55,11 +55,11 @@ public class Profile   {
   **/
   @ApiModelProperty(value = "")
 
-  public Long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(int id) {
     this.id = id;
   }
 

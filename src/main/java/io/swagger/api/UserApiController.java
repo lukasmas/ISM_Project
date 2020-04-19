@@ -106,8 +106,7 @@ public class UserApiController implements UserApi {
         String accept = request.getHeader("Accept");
         User x = new User("KUBUS");
         userRep.save(x);
-        User y = userRep.getOne(Long.valueOf(1));
-        y.setEmail("ebeb@xd.pl");
+        User y = userRep.getOne((long) 1);
         return new ResponseEntity<>(y.toString(), HttpStatus.OK);
     }
 

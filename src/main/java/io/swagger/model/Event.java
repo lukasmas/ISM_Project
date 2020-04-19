@@ -32,30 +32,30 @@ public class Event   {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @JsonProperty("id")
-  private Long id = null;
+  private int id = 0;
 
   @JsonProperty("place")
   private String place = null;
 
-  @JsonProperty("when")
-  private Integer when = null;
+  @JsonProperty("eventDate")
+  private Integer eventDate = null;
 
   @JsonProperty("ownerId")
   private Long ownerId = null;
 
   @JsonProperty("participantsId")
   @Valid
-  private List<Long> participantsId = null;
+  private Long participantsId = null;
 
   /**
    * Event status
    */
   public enum StatusEnum {
-    AVAILABLE("available"),
-    
-    CANCELLED("cancelled"),
-    
-    DURING("during");
+      AVAILABLE("available"),
+
+      CANCELLED("cancelled"),
+
+      DURING("during");
 
     private String value;
 
@@ -83,7 +83,7 @@ public class Event   {
   @JsonProperty("status")
   private StatusEnum status = null;
 
-  public Event id(Long id) {
+  public Event id(int id) {
     this.id = id;
     return this;
   }
@@ -95,11 +95,11 @@ public class Event   {
   @ApiModelProperty(value = "")
 
 
-  public Long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
@@ -123,8 +123,8 @@ public class Event   {
     this.place = place;
   }
 
-  public Event when(Integer when) {
-    this.when = when;
+  public Event eventDate(Integer eventDate) {
+    this.eventDate = eventDate;
     return this;
   }
 
@@ -135,13 +135,13 @@ public class Event   {
   @ApiModelProperty(value = "")
 
 
-  public Integer getWhen() {
-    return when;
-  }
-
-  public void setWhen(Integer when) {
-    this.when = when;
-  }
+//  public Integer getWhen() {
+//    return eventDate;
+//  }
+//
+//  public void setWhen(Integer when) {
+//    this.when = when;
+//  }
 
   public Event ownerId(Long ownerId) {
     this.ownerId = ownerId;
@@ -163,16 +163,16 @@ public class Event   {
     this.ownerId = ownerId;
   }
 
-  public Event participantsId(List<Long> participantsId) {
+  public Event participantsId(Long participantsId) {
     this.participantsId = participantsId;
     return this;
   }
 
   public Event addParticipantsIdItem(Long participantsIdItem) {
     if (this.participantsId == null) {
-      this.participantsId = new ArrayList<Long>();
+      this.participantsId = new Long(1);
     }
-    this.participantsId.add(participantsIdItem);
+    this.participantsId = participantsIdItem;
     return this;
   }
 
@@ -183,11 +183,11 @@ public class Event   {
   @ApiModelProperty(value = "")
 
 
-  public List<Long> getParticipantsId() {
+  public Long getParticipantsId() {
     return participantsId;
   }
 
-  public void setParticipantsId(List<Long> participantsId) {
+  public void setParticipantsId(Long participantsId) {
     this.participantsId = participantsId;
   }
 
@@ -223,7 +223,7 @@ public class Event   {
     Event event = (Event) o;
     return Objects.equals(this.id, event.id) &&
         Objects.equals(this.place, event.place) &&
-        Objects.equals(this.when, event.when) &&
+        Objects.equals(this.eventDate, event.eventDate) &&
         Objects.equals(this.ownerId, event.ownerId) &&
         Objects.equals(this.participantsId, event.participantsId) &&
         Objects.equals(this.status, event.status);
@@ -231,7 +231,7 @@ public class Event   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, place, when, ownerId, participantsId, status);
+    return Objects.hash(id, place, eventDate, ownerId, participantsId, status);
   }
 
   @Override
@@ -241,7 +241,7 @@ public class Event   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    place: ").append(toIndentedString(place)).append("\n");
-    sb.append("    when: ").append(toIndentedString(when)).append("\n");
+    sb.append("    when: ").append(toIndentedString(eventDate)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("    participantsId: ").append(toIndentedString(participantsId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

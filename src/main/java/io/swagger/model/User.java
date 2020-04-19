@@ -28,7 +28,7 @@ public class User   {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @JsonProperty("id")
-  private Long id = null;
+  private int id = 0;
 
   @JsonProperty("username")
   private String username;
@@ -49,13 +49,13 @@ public class User   {
   private Integer userStatus = null;
 
   @JsonProperty("profile")
-  private Profile profile = null;
+  private String profile = null;
 
   public User(String username) {
     this.username = username;
   }
 
-  public User id(Long id) {
+  public User id(int id) {
     this.id = id;
     return this;
   }
@@ -67,11 +67,11 @@ public class User   {
   @ApiModelProperty(value = "")
 
 
-  public Long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
@@ -195,7 +195,7 @@ public class User   {
     this.userStatus = userStatus;
   }
 
-  public User profile(Object profile) {
+  public User profile(String profile) {
     this.profile = profile;
     return this;
   }
@@ -207,13 +207,13 @@ public class User   {
   @ApiModelProperty(value = "")
 
 
-  public Object getProfile() {
-    return profile;
-  }
-
-  public void setProfile(Object profile) {
-    this.profile = profile;
-  }
+//  public String getProfile() {
+//    return profile;
+//  }
+//
+//  public void setProfile(String profile) {
+//    this.profile = profile;
+//  }
 
 
   @Override

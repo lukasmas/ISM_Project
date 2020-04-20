@@ -33,13 +33,10 @@ public interface ProfileApi {
         @ApiResponse(code = 400, message = "Incorrect data"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/profile/edditProfile/{userId}",
-        produces = { "application/xml", "application/json" }, 
+        produces = {"application/json" }, 
         method = RequestMethod.POST)
     default ResponseEntity<Void> edditProfile(@ApiParam(value = "User can only edit itself.",required=true) @PathVariable("userId") String userId,@ApiParam(value = "Contain profile in JSON" ,required=true )  @Valid @RequestBody Profile profile) {
-//        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
-//        } else {
-//            log.warn("ObjectMapper or HttpServletRequest not configured in default ProfileApi interface so no example is generated");
-//        }
+
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 

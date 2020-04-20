@@ -28,10 +28,10 @@ public class User   {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @JsonProperty("id")
-  private int id = 0;
+  private Long id = null;
 
   @JsonProperty("username")
-  private String username;
+  private String username = null;
 
   @JsonProperty("firstName")
   private String firstName = null;
@@ -55,7 +55,7 @@ public class User   {
     this.username = username;
   }
 
-  public User id(int id) {
+  public User id(Long id) {
     this.id = id;
     return this;
   }
@@ -67,11 +67,11 @@ public class User   {
   @ApiModelProperty(value = "")
 
 
-  public int getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

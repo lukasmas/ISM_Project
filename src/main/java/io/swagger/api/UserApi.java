@@ -35,13 +35,10 @@ public interface UserApi {
         @ApiResponse(code = 400, message = "Invalid username supplied"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/user/deleteUser/{userId}",
-        produces = { "application/xml", "application/json" }, 
+        produces = { "application/json" }, 
         method = RequestMethod.GET)
     default ResponseEntity<Void> deleteUser(@ApiParam(value = "User can delete only itself",required=true) @PathVariable("userId") String userId) {
-//        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
-//        } else {
-//            log.warn("ObjectMapper or HttpServletRequest not configured in default UserApi interface so no example is generated");
-//        }
+
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
@@ -51,13 +48,10 @@ public interface UserApi {
         @ApiResponse(code = 400, message = "Incorrect data"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/user/editUser/{userId}",
-        produces = { "application/xml", "application/json" }, 
+        produces = { "application/json" }, 
         method = RequestMethod.POST)
     default ResponseEntity<Void> editUser(@ApiParam(value = "User can only edit itself.",required=true) @PathVariable("userId") String userId,@ApiParam(value = "contain user in JSON" ,required=true )  @Valid @RequestBody User user) {
-//        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
-//        } else {
-//            log.warn("ObjectMapper or HttpServletRequest not configured in default UserApi interface so no example is generated");
-//        }
+
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
@@ -68,29 +62,10 @@ public interface UserApi {
         @ApiResponse(code = 400, message = "Invalid username supplied"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/user/{username}",
-        produces = { "application/xml", "application/json" }, 
+        produces = { "application/json" }, 
         method = RequestMethod.GET)
     default ResponseEntity<User> getUserByName(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true) @PathVariable("username") String username) {
-//        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
-//            if (getAcceptHeader().get().contains("application/xml")) {
-//                try {
-//                    return new ResponseEntity<>(getObjectMapper().get().readValue("<User>  <userId>123456789</userId>  <username>aeiou</username>  <firstName>aeiou</firstName>  <lastName>aeiou</lastName>  <email>aeiou</email>  <password>aeiou</password>  <userStatus>123</userStatus>  <profile></profile></User>", User.class), HttpStatus.NOT_IMPLEMENTED);
-//                } catch (IOException e) {
-//                    log.error("Couldn't serialize response for content type application/xml", e);
-//                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//                }
-//            }
-//            if (getAcceptHeader().get().contains("application/json")) {
-//                try {
-//                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"firstName\" : \"firstName\",  \"lastName\" : \"lastName\",  \"password\" : \"password\",  \"userStatus\" : 6,  \"profile\" : \"{}\",  \"userId\" : 0,  \"email\" : \"email\",  \"username\" : \"username\"}", User.class), HttpStatus.NOT_IMPLEMENTED);
-//                } catch (IOException e) {
-//                    log.error("Couldn't serialize response for content type application/json", e);
-//                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//                }
-//            }
-//        } else {
-//            log.warn("ObjectMapper or HttpServletRequest not configured in default UserApi interface so no example is generated");
-//        }
+
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
@@ -100,29 +75,10 @@ public interface UserApi {
         @ApiResponse(code = 200, message = "successful operation", response = String.class),
         @ApiResponse(code = 400, message = "Invalid username/password supplied") })
     @RequestMapping(value = "/user/login",
-        produces = { "application/xml", "application/json" }, 
+        produces = { "application/json" }, 
         method = RequestMethod.GET)
     default ResponseEntity<String> loginUser(@NotNull @ApiParam(value = "The user name for login", required = true) @Valid @RequestParam(value = "username", required = true) String username,@NotNull @ApiParam(value = "The password for login in clear text", required = true) @Valid @RequestParam(value = "password", required = true) String password) {
-//        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
-//            if (getAcceptHeader().get().contains("application/xml")) {
-//                try {
-//                    return new ResponseEntity<>(getObjectMapper().get().readValue("aeiou", String.class), HttpStatus.NOT_IMPLEMENTED);
-//                } catch (IOException e) {
-//                    log.error("Couldn't serialize response for content type application/xml", e);
-//                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//                }
-//            }
-//            if (getAcceptHeader().get().contains("application/json")) {
-//                try {
-//                    return new ResponseEntity<>(getObjectMapper().get().readValue("\"\"", String.class), HttpStatus.NOT_IMPLEMENTED);
-//                } catch (IOException e) {
-//                    log.error("Couldn't serialize response for content type application/json", e);
-//                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//                }
-//            }
-//        } else {
-//            log.warn("ObjectMapper or HttpServletRequest not configured in default UserApi interface so no example is generated");
-//        }
+
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
@@ -131,7 +87,7 @@ public interface UserApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
     @RequestMapping(value = "/user/logout",
-        produces = { "application/xml", "application/json" }, 
+        produces = { "application/json" }, 
         method = RequestMethod.GET)
     default ResponseEntity<Void> logoutUser() {
 //        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
@@ -147,7 +103,7 @@ public interface UserApi {
         @ApiResponse(code = 400, message = "incorrect data"),
         @ApiResponse(code = 404, message = "User cannot be created") })
     @RequestMapping(value = "/user/addNewUser",
-        produces = { "application/xml", "application/json" }, 
+        produces = { "application/json" }, 
         method = RequestMethod.POST)
     default ResponseEntity<Void> registerUser(@ApiParam(value = "Contain new user in JSON" ,required=true )  @Valid @RequestBody User user) {
 //        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
@@ -161,9 +117,9 @@ public interface UserApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "successful operation") })
     @RequestMapping(value = "/user/test",
-            produces = { "application/xml", "application/json" },
+            produces = {"application/json" },
             method = RequestMethod.GET)
-    default ResponseEntity<String> test() {
+    default ResponseEntity<User> test() {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 

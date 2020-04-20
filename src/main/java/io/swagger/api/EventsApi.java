@@ -33,13 +33,9 @@ public interface EventsApi {
         @ApiResponse(code = 400, message = "Incorrect data"),
         @ApiResponse(code = 404, message = "Events cannot be created") })
     @RequestMapping(value = "/events/createEvent",
-        produces = { "application/xml", "application/json" }, 
+        produces = {"application/json" }, 
         method = RequestMethod.POST)
     default ResponseEntity<Void> createEvent(@ApiParam(value = "Contain full event in JSON" ,required=true )  @Valid @RequestBody Event event) {
-//        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
-//        } else {
-//            log.warn("ObjectMapper or HttpServletRequest not configured in default EventsApi interface so no example is generated");
-//        }
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
@@ -49,13 +45,9 @@ public interface EventsApi {
         @ApiResponse(code = 400, message = "Incorrect data"),
         @ApiResponse(code = 404, message = "Events cannot be created") })
     @RequestMapping(value = "/events/deleteEvent/{eventId}",
-        produces = { "application/xml", "application/json" }, 
+        produces = {"application/json" }, 
         method = RequestMethod.GET)
     default ResponseEntity<Void> deleteEvent(@ApiParam(value = "",required=true) @PathVariable("eventId") String eventId) {
-//        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
-//        } else {
-//            log.warn("ObjectMapper or HttpServletRequest not configured in default EventsApi interface so no example is generated");
-//        }
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
@@ -65,13 +57,9 @@ public interface EventsApi {
         @ApiResponse(code = 400, message = "Incorrect data"),
         @ApiResponse(code = 404, message = "Events cannot be created") })
     @RequestMapping(value = "/events/editEvent",
-        produces = { "application/xml", "application/json" }, 
+        produces = {"application/json" }, 
         method = RequestMethod.POST)
     default ResponseEntity<Void> editEvent(@ApiParam(value = "Contain full event in JSON" ,required=true )  @Valid @RequestBody Event event) {
-//        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
-//        } else {
-//            log.warn("ObjectMapper or HttpServletRequest not configured in default EventsApi interface so no example is generated");
-//        }
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 

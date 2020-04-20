@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
@@ -102,17 +103,44 @@ public class UserApiController implements UserApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> test() {
+    public ResponseEntity<User> test() {
         String accept = request.getHeader("Accept");
-        User x = new User("KUBUS");
-        userRep.save(x);
-        User y = userRep.getOne((long) 1);
-        return new ResponseEntity<>(y.toString(), HttpStatus.OK);
+//        User x = new User("KUBUS");
+//        userRep.save(x);
+        User x = userRep.findOne(1L);
+        log.error(x.toString());
+        try {
+            return new ResponseEntity<User>(x,HttpStatus.OK);
+        }
+        catch(Exception e) {
+            log.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+//        ObjectMapper mapper = new ObjectMapper();
+//        String json;
+//        try {
+//            json = mapper.writeValueAsString(x);
+//            return new ResponseEntity<>(json, HttpStatus.OK).;
+//        } catch (JsonProcessingException e) {
+//            log.error(e.getMessage());
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+
     }
 
-    public ResponseEntity<Void> registerUser(@ApiParam(value = "Contain new user in JSON" ,required=true )  @Valid @RequestBody User user) {
+    public ResponseEntity<Void> registerUser(@ApiParam(value = "Contain new user in JSON" ,required=true )  @Valid @RequestBody User newUser) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+//        ObjectMapper mapper = new ObjectMapper();
+//        try {
+//            User newUser = mapper.readValue(userJSON,  User.class);
+//            log.info(newUser.toString());
+//        } catch (IOException e) {
+//            log.error(e.getMessage());
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+
+        log.error(newUser.toString());
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
 }

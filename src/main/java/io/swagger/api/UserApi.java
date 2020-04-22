@@ -11,11 +11,7 @@ import netscape.javascript.JSObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.validation.Valid;
@@ -58,6 +54,7 @@ public interface UserApi {
             @ApiResponse(code = 200, message = "successful operation", response = User.class),
             @ApiResponse(code = 400, message = "Invalid username supplied"),
             @ApiResponse(code = 404, message = "User not found")})
+    @CrossOrigin
     @RequestMapping(value = "/user/{username}",
             produces = {"application/json"},
             method = RequestMethod.GET)

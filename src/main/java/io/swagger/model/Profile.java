@@ -28,23 +28,24 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-19T19:22:40.372Z")
 @NoArgsConstructor
 @AllArgsConstructor
-//@Setter
-////@Getter
+@Setter
+@Getter
 @Entity(name = "profile")
 public class Profile   {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @JsonProperty("id")
-  private int id = 0;
-
-  @JsonProperty("userId")
-  private String userId = null;
+  private Long id = null;
 
   @JsonProperty("photoUrls")
   @Valid
   private String photoUrls = null;
 
-  public Profile id(int id) {
+  @JsonProperty("settings")
+  @Valid
+  private String settings = null;
+
+  public Profile id(Long id) {
     this.id = id;
     return this;
   }
@@ -55,47 +56,25 @@ public class Profile   {
   **/
   @ApiModelProperty(value = "")
 
-  public int getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-  public Profile userId(String userId) {
-    this.userId = userId;
-    return this;
-  }
-
-  /**
-   * Get userId
-   * @return userId
-  **/
-  @ApiModelProperty(example = "doggie", required = true, value = "")
-  @NotNull
-
-
-  public String getUserId() {
-    return userId;
-  }
-
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
 
   public Profile photoUrls(String photoUrls) {
     this.photoUrls = photoUrls;
     return this;
   }
 
-  public Profile addPhotoUrlsItem(String photoUrlsItem) {
-    if (this.photoUrls == null) {
-      this.photoUrls = new String();
-    }
-    this.photoUrls = photoUrlsItem;
+  public Profile settings(String settings) {
+    this.settings = settings;
     return this;
   }
+
 
   /**
    * Get photoUrls
@@ -123,13 +102,12 @@ public class Profile   {
     }
     Profile profile = (Profile) o;
     return Objects.equals(this.id, profile.id) &&
-        Objects.equals(this.userId, profile.userId) &&
         Objects.equals(this.photoUrls, profile.photoUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userId, photoUrls);
+    return Objects.hash(id, photoUrls, settings);
   }
 
   @Override
@@ -138,8 +116,8 @@ public class Profile   {
     sb.append("class Profile {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    photoUrls: ").append(toIndentedString(photoUrls)).append("\n");
+    sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

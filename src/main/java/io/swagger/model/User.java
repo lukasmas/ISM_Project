@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Entity;
@@ -23,6 +25,9 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-19T19:22:40.372Z")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+
 @Entity(name = "user")
 public class User   {
   @Id
@@ -48,8 +53,8 @@ public class User   {
   @JsonProperty("userStatus")
   private Integer userStatus = null;
 
-  @JsonProperty("profile")
-  private String profile = null;
+  @JsonProperty("profileId")
+  private Long profileId = null;
 
   public User(String username) {
     this.username = username;
@@ -195,9 +200,17 @@ public class User   {
     this.userStatus = userStatus;
   }
 
-  public User profile(String profile) {
-    this.profile = profile;
+  public User profileId(Long profileId) {
+    this.profileId = profileId;
     return this;
+  }
+
+  public Long getProfileId() {
+    return profileId;
+  }
+
+  public void setProfileId(Long profileId) {
+    this.profileId = profileId;
   }
 
   /**
@@ -232,12 +245,12 @@ public class User   {
         Objects.equals(this.email, user.email) &&
         Objects.equals(this.password, user.password) &&
         Objects.equals(this.userStatus, user.userStatus) &&
-        Objects.equals(this.profile, user.profile);
+        Objects.equals(this.profileId, user.profileId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, firstName, lastName, email, password, userStatus, profile);
+    return Objects.hash(id, username, firstName, lastName, email, password, userStatus, profileId);
   }
 
   @Override
@@ -252,7 +265,7 @@ public class User   {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    userStatus: ").append(toIndentedString(userStatus)).append("\n");
-    sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
+    sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
